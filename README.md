@@ -14,7 +14,7 @@ E-mail: marmello@gmail.com
 
 Título: Script para desenhar graficos no R
 
-Publicado em 25 de maio de 2020 (versão em portgues).
+Publicado em 25 de maio de 2020 (versão em português).
 
 Rodado no 4.0.0 (2020-04-24) -- "Arbor Day"
 
