@@ -8,7 +8,7 @@
 ##### Post: Qual grafico devo fazer?
 ##### URL: https://marcoarmello.wordpress.com
 ##### https://marcomellolab.wordpress.com
-##### Autor: Marco Mello
+##### Autor: Marco Mello & Renata Muylaert
 ##### E-mail: marmello@gmail.com 
 ##### Titulo: Script para desenhar graficos no R
 ##### Publicado em 25 de maio de 2020 (versao em portgues).
@@ -171,6 +171,9 @@ anos2
 anos2$year <- row.names(anos2)
 anos3 <- subset(anos2, anos2$year < 2013)
 
+anosN <- subset(dados2, dados2$year < 2013)
+nrow(anosN)
+
 png(filename = "linha.png", res = 300, height= 2000, width= 3000)
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 plot(anos3$anos ~ anos3$year, type = "l",
@@ -330,13 +333,38 @@ dev.off()
 ############### GRAFO ############### 
 
 
-library(igraph)
 library(bipartite)
 
 grafo <- read.delim("grafo.txt", 
                     row.names=1, 
                     header=TRUE)
 grafo
+
+png(filename = "grafo1.png", res = 300, height= 2000, width= 3000)
+par(mfrow=c(1,1),mar=c(1,1,5,1), bg = "white")
+plotweb(grafo,method = "cca", 
+        text.rot = 90, empty = TRUE, labsize = .70, ybig = 0.9, arrow ="no",
+        col.interaction = adjustcolor("grey", alpha.f = 0.2), 
+        bor.col.interaction = adjustcolor("grey", alpha.f = 0.2),
+        col.high = "black", 
+        bor.col.high="black", 
+        col.low="grey50", 
+        bor.col.low="grey50", 
+        high.lablength = NULL, low.lablength = NULL, 
+        sequence=NULL, low.abun = NULL, high.abun = NULL, 
+        low.abun.col = NULL, bor.low.abun.col = NULL, 
+        high.abun.col = NULL, bor.high.abun.col= NULL, 
+        text.high.col = "black",text.low.col = "black", 
+        adj.high=NULL, adj.low=NULL, plot.axes = FALSE, 
+        low.y=0.6, high.y=1.0, add=FALSE, 
+        y.lim=NULL, x.lim=NULL, low.plot=TRUE)
+title("Grafo",cex.main=3,col.main="black")
+par(mfrow=c(1,1))
+dev.off()
+
+#####
+
+library(igraph)
 
 grafo2 <- graph_from_incidence_matrix(grafo, 
                                       directed = FALSE,
@@ -349,22 +377,24 @@ V(grafo2)
 vec1 <- rep(0,length=98)
 vec2 <- rep(1, length=39)
 types <- c(vec1,vec2)
-colors <- ifelse(types == 0, "black", "grey")
+colors <- ifelse(types == 0, "black", "grey50")
 colors
 
 E(grafo2)$width = scale(E(grafo2)$weight)
 
-png(filename = "grafo.png", res = 300, height= 2500, width= 3000)
+png(filename = "grafo2.png", res = 300, height= 3000, width= 3000)
 par(mfrow=c(1,1),mar=c(1,1,5,1), bg = "white")
 plot(grafo2,
      vertex.color = colors, 
      vertex.frame.color= colors, 
-     vertex.size=7,
-     vertex.label = NA,
+     vertex.size=6,
+     vertex.label.cex=.4,
+     vertex.label = V(grafo2)$names,
+     vertex.label.color = "white",
      edge.color = adjustcolor("black", alpha.f = .3), 
-     edge.width = 1,
+     edge.width = E(grafo2)$width*2,
      edge.curved = 0.3,
-     layout=layout_nicely)
+     layout=layout_in_circle)
 title("Grafo",cex.main=3,col.main="black")
 par(mfrow=c(1,1))
 dev.off()
