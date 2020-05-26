@@ -4,8 +4,6 @@ Códigos de R usados no post "Qual gráfico devo fazer?"
 
 Sobrevivendo na Ciência (blog)
 
-Post: Qual gráfico devo fazer?
-
 URL: https://marcoarmello.wordpress.com
 
 Autor: Marco Mello
