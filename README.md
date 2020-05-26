@@ -14,7 +14,7 @@ Título: Script para desenhar graficos no R
 
 Publicado em 25 de maio de 2020 (versão em português).
 
-Rodado no 4.0.0 (2020-04-24) -- "Arbor Day"
+Rodado no R 4.0.0 (2020-04-24) -- "Arbor Day"
 
 Fonte dos dados usados como exemplo: Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. “ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.” Ecology 99 (2): 498–498. https://doi.org/10.1002/ecy.2106.
 
