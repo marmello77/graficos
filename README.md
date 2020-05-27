@@ -10,7 +10,7 @@ Autor: Marco Mello
 
 E-mail: marmello@gmail.com 
 
-Título: Script para desenhar graficos no R
+Título: Script para desenhar gráficos no R
 
 Publicado em 25 de maio de 2020 (versão em português).
 
