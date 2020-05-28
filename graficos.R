@@ -125,13 +125,13 @@ par(mfrow=c(1,1))
 dev.off()
 
 
-############### BOXPLOT ############### 
+############### CAIXAS ############### 
 
 
 png(filename = "boxplot.png", res = 300, height= 2000, width= 3000)
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 boxplot(dados2$body_mass~dados2$sex,
-        main = "Boxplot", 
+        main = "Diagrama de caixas", 
         xlab = "Sexo", names=c("Fêmeas","Machos"),
         ylab = "Massa corporal (g)",
         col = "grey", border = "black",
