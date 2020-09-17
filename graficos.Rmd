@@ -9,6 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE, fig.width=12, fig.height=8)
 ```
 
+
 ## Script para desenhar gráficos no R
 
 Códigos de R usados no post "Qual gráfico devo fazer?"
@@ -29,12 +30,31 @@ Neste tutorial usei como exemplo os dados de:
 
 Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. [“ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.”](https://doi.org/10.1002/ecy.2106) Ecology 99 (2): 498–498.
 
+
 ## Aviso 
 
 Você pode usar este script livremente para fins não comerciais por seu próprio risco. Não assumimos nenhuma responsabilidade pelo uso deste software, não transmitimos licença ou título sob nenhuma patente, direito autoral ou mascaramento de direito de trabalho sobre o produto. Reservamo-nos o direito de fazer alterações no software sem notificação. Também não declaramos ou garantimos que esse aplicativo seja adequado para o uso especificado sem testes ou modificações adicionais. Se esse script o ajudar a produzir algum trabalho acadêmico (artigo, livro, capítulo, dissertação etc.), por favor, reconheça os autores e cite a fonte.
 
 
-## 1. Prepare o ambiente de trabalho
+## Índice
+
+1. [Prepare o ambiente de trabalho](#ambiente)
+2. [Prepare os dados](#dados)
+3. [Histograma](#histograma)
+4. [Barras](#barras)
+5. [Barras agrupadas](#agrupadas)
+6. [Barras empilhadas](#empilhadas)
+7. [Pizza](#pizza)
+8. [Caixas](#caixas)
+9. [Scatterplot](#scatter)
+10. [Linha](#linha)
+11. [Pareado](#pareado)
+12. [Logístico](#logistico)
+13. [Mapa](#mapa)
+14. [Grafo](#grafo)
+
+
+## 1. Prepare o ambiente de trabalho {#ambiente}
 
 Defina o diretório de trabalho como sendo o mesmo onde estão este tutorial e os dados:
 
@@ -49,7 +69,7 @@ rm(list= ls())
 ```
 
 
-## 2. Prepare os dados
+## 2. Prepare os dados {#dados}
 
 Importe os dados para o R:
 
@@ -71,7 +91,7 @@ Fique apenas com os dados dos morcegos abaixo de 30 g de massa corporal, como co
 dados2 <- subset(dados, dados$body_mass < 30)
 ```
 
-## 3. Histograma
+## 3. Histograma {#histograma}
 
 Vamos começar plotando um histograma.
 
@@ -101,7 +121,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 4. Barras
+## 4. Barras {#barras}
 
 Agora plote o diagrama de barras.
 
@@ -127,7 +147,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 5. Barras agrupadas
+## 5. Barras agrupadas {#agrupadas}
 
 Primeiro, extraia os dados de idade:
 
@@ -155,7 +175,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 6. Barras empilhadas
+## 6. Barras empilhadas {#empilhadas}
 
 Primeiro, extraia os dados de idade:
 
@@ -189,7 +209,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 7. Pizza
+## 7. Pizza {#pizza}
 
 Use os dados de sexo que extraiu anteriormente:
 
@@ -211,7 +231,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 8. Caixas
+## 8. Caixas {#caixas}
 
 Também conhecido como boxplot.
 
@@ -242,7 +262,7 @@ par(mfrow=c(1,1))
 ```
 
 
-## 9. Scatterplot
+## 9. Scatterplot {#scatter}
 
 Também conhecido como diagrama de dispersão.
 
@@ -282,7 +302,7 @@ par(mfrow=c(1,1))
 
 
 
-## 10. Linha
+## 10. Linha {#linha}
 
 Primeiro, extraia e inspecione os dados dos anos:
 
@@ -338,7 +358,7 @@ par(mfrow=c(1,1))
 
 
 
-## 11. Pareado
+## 11. Pareado {#pareado}
 
 Para fazer este gráfico você precisará do pacote ggplot2:
 
@@ -384,7 +404,7 @@ p1
 
 
 
-## 12. Logístico
+## 12. Logístico {#logistico}
 
 Para fazer este gráfico você precisará de mais 2 pacotes:
 
@@ -464,7 +484,7 @@ par(mfrow=c(1,1))
 
 
 
-## 13. Mapa
+## 13. Mapa {#mapa}
 
 Para fazer este gráfico você precisará de mais alguns pacotes:
 
@@ -554,7 +574,7 @@ g1 +
 
 
 
-## 14. Grafos
+## 14. Grafo {#grafo} 
 
 Para desenhar este gráfico você precisará de mais um pacote:
 
