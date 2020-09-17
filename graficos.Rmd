@@ -1,40 +1,95 @@
-#####################################################
-#                                                   #
-#    SCRIPT PARA DESENHAR GRAFICOS NO R             #
-#                                                   #       
-#####################################################
+---
+title: "Gráficos"
+author: "Marco Mello"
+date: "17/09/2020"
+output: pdf_document
+---
 
-##### Blog: [Sobrevivendo na Ciencia](https://marcoarmello.wordpress.com)
-##### Post: Qual gráfico devo fazer?
-##### https://marcomellolab.wordpress.com
-##### Autor: Marco Mello
-##### E-mail: marmello@usp.br
-##### Titulo: Script para desenhar graficos no R
-##### Publicado em 25 de maio de 2020 (versão em português).
-##### Rodado no 4.0.0 (2020-04-24) -- "Arbor Day"
-##### Fonte dos dados usados como exemplo: Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. “ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.” Ecology 99 (2): 498–498. https://doi.org/10.1002/ecy.2106.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width=12, fig.height=8)
+```
 
-##### Aviso: Voce pode usar este script livremente para fins nao comerciais por seu proprio risco. Nao assumimos nenhuma responsabilidade pelo uso deste software, nao transmitimos licenca ou titulo sob nenhuma patente, direito autoral ou mascaramento de direito de trabalho sobre o produto. Reservamo-nos o direito de fazer alteracoes no software sem notificacao. Tambem nao declaramos ou garantimos que esse aplicativo seja adequado para o uso especificado sem testes ou modificacoes adicionais. Se esse script o ajudar a produzir algum trabalho academico (artigo, livro, capitulo, dissertacao etc.), por favor, reconheca os autores e cite a fonte.
+## Script para desenhar gráficos no R
+
+Códigos de R usados no post "Qual gráfico devo fazer?"
+
+Blog: [Sobrevivendo na Ciência](https://marcoarmello.wordpress.com)
+
+Autor: Marco Mello
+
+E-mail: marmello@usp.br 
+
+Publicado em 17 de setembro de 2020 (versão em português).
+
+Rodado no R version 4.0.2 (2020-06-22) "Taking Off Again"
+
+## Fonte dos dados 
+
+Neste tutorial usei como exemplo os dados de:
+
+Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. [“ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.”](https://doi.org/10.1002/ecy.2106) Ecology 99 (2): 498–498.
+
+## Aviso 
+
+Você pode usar este script livremente para fins não comerciais por seu próprio risco. Não assumimos nenhuma responsabilidade pelo uso deste software, não transmitimos licença ou título sob nenhuma patente, direito autoral ou mascaramento de direito de trabalho sobre o produto. Reservamo-nos o direito de fazer alterações no software sem notificação. Também não declaramos ou garantimos que esse aplicativo seja adequado para o uso especificado sem testes ou modificações adicionais. Se esse script o ajudar a produzir algum trabalho acadêmico (artigo, livro, capítulo, dissertação etc.), por favor, reconheça os autores e cite a fonte.
 
 
+## 1. Prepare o ambiente de trabalho
+
+Defina o diretório de trabalho como sendo o mesmo onde estão este tutorial e os dados:
+
+```{r}
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-rm(list= ls())
-cat("\014")  
+```
 
+Remova todos os objetos da memória:
+
+```{r}
+rm(list= ls())
+```
+
+
+## 2. Prepare os dados
+
+Importe os dados para o R:
+
+```{r}
 dados <- read.delim("dados.txt", sep = "\t", header = T, na = "NA")
+```
+
+Inspecione os dados para ver se estão ok:
+
+```{r}
 head(dados)
 summary(dados)
 summary(dados$body_mass)
+```
+
+Fique apenas com os dados dos morcegos abaixo de 30 g de massa corporal, como comentado no post do blog:
+
+```{r}
 dados2 <- subset(dados, dados$body_mass < 30)
+```
 
+## 3. Histograma
 
-############### HISTOGRAMA ############### 
+Vamos começar plotando um histograma.
 
+Primeiro, faça um resumo dos dados :
 
+```{r}
 summary(dados2$body_mass)
-length(dados2$body_mass)-(sum(is.na(dados2$body_mass)))
+```
 
-png(filename = "histograma.png", res = 300, height= 2000, width= 3000)
+Confira o total de casos, excluindo os dados faltantes:
+
+```{r}
+length(dados2$body_mass)-(sum(is.na(dados2$body_mass)))
+```
+
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 hist(dados2$body_mass,
      main = "Histograma", 
@@ -43,15 +98,23 @@ hist(dados2$body_mass,
      col = "grey", border = "white",
      xlim=c(5,25), cex.axis = 1.5, cex.lab = 2, cex.main = 3)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### BARRAS ############### 
+## 4. Barras
 
+Agora plote o diagrama de barras.
 
+Primeiro, extraia os dados de sexo:
+
+```{r}
 sexo <- table(dados2$sex)
+sexo
+```
 
-png(filename = "barras.png", res = 300, height= 2000, width= 3000)
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 barplot(sexo,
         main = "Diagrama de barras",
@@ -61,16 +124,22 @@ barplot(sexo,
         cex = 1.5, cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex.sub = 1,
         ylim=c(0,1500))
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### BARRAS AGRUPADAS ############### 
+## 5. Barras agrupadas
 
+Primeiro, extraia os dados de idade:
 
+```{r}
 idade <- table(dados2$sex, dados2$age)
 idade
+```
 
-png(filename = "barrasagrupadas.png", res = 300, height= 2000, width= 3000)
+
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 barplot(idade,
         beside = T,
@@ -83,19 +152,29 @@ barplot(idade,
         cex = 1.5, cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex.sub = 1,
         ylim=c(0,1500))
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### BARRAS EMPILHADAS ############### 
+## 6. Barras empilhadas
 
+Primeiro, extraia os dados de idade:
 
+```{r}
 idade2 <- table(dados2$sex, dados2$age)
 idade2
+```
 
+Depois, converta os dados em porcentagens:
+
+```{r}
 idade3 <- apply(idade2, 2, function(x){x*100/sum(x,na.rm=T)})
 idade3
+```
 
-png(filename = "barrasempilhadas.png", res = 300, height= 2000, width= 3000)
+
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 barplot(idade3,
         beside = F,
@@ -107,13 +186,21 @@ barplot(idade3,
         legend = c("Fêmeas", "Machos"),
         cex = 1.5, cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex.sub = 1)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### PIZZA ############### 
+## 7. Pizza
+
+Use os dados de sexo que extraiu anteriormente:
+
+```{r}
+sexo
+```
 
 
-png(filename = "pizza.png", res = 300, height= 3000, width= 3000)
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(1,1,5,1), bg = "white")
 pie(sexo,
     main = "Diagrama de pizza",
@@ -121,13 +208,29 @@ pie(sexo,
     col = c("grey", "white"),
     cex = 2.5, cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex.sub = 1)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### CAIXAS ############### 
+## 8. Caixas
+
+Também conhecido como boxplot.
+
+Use os dados de sexo:
+
+```{r}
+table(dados2$sex)
+```
+
+E também os dados de massa corporal:
+
+```{r}
+summary(dados2$body_mass)
+```
 
 
-png(filename = "boxplot.png", res = 300, height= 2000, width= 3000)
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 boxplot(dados2$body_mass~dados2$sex,
         main = "Diagrama de caixas", 
@@ -136,16 +239,35 @@ boxplot(dados2$body_mass~dados2$sex,
         col = "grey", border = "black",
         cex.axis = 1.5, cex.lab = 2, cex.main = 3)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### SCATTERPLOT ############### 
+## 9. Scatterplot
 
+Também conhecido como diagrama de dispersão.
 
+Use os dados de comprimento do antebraço:
+
+```{r}
 summary(dados2$forearm)
-length(dados2$forearm)-(sum(is.na(dados2$forearm)))
+```
 
-png(filename = "scatterplot.png", res = 300, height= 3000, width= 3000)
+Confira o total de casos, excluindo os dados faltantes:
+
+```{r}
+length(dados2$forearm)-(sum(is.na(dados2$forearm)))
+```
+
+
+E também os dados de massa corporal:
+
+```{r}
+summary(dados2$body_mass)
+```
+
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 plot(dados2$body_mass~dados2$forearm,
      main = "Diagrama de dispersão",
@@ -155,25 +277,55 @@ plot(dados2$body_mass~dados2$forearm,
      cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex = 2)
 abline(lm(dados2$body_mass~dados2$forearm))
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### LINHA ############### 
 
 
+## 10. Linha
+
+Primeiro, extraia e inspecione os dados dos anos:
+
+```{r}
 anos <- tapply(dados2$body_mass, dados2$year, mean)
 anos
 class(anos)
-plot(anos)
+```
+
+Converta o formato dos dados:
+
+```{r}
 anos2 <- as.data.frame(anos)
 anos2
+
+```
+
+Renomeie as linhas:
+
+```{r}
 anos2$year <- row.names(anos2)
+anos2$year
+```
+
+Selecione apenas os anos anteriores a 2013:
+
+```{r}
 anos3 <- subset(anos2, anos2$year < 2013)
+anos3
+```
 
+
+Confira o total de casos, excluindo os dados faltantes:
+
+```{r}
 anosN <- subset(dados2, dados2$year < 2013)
+head(anosN)
 nrow(anosN)
+```
 
-png(filename = "linha.png", res = 300, height= 2000, width= 3000)
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 plot(anos3$anos ~ anos3$year, type = "l",
      main = "Diagrama de linha",
@@ -181,22 +333,40 @@ plot(anos3$anos ~ anos3$year, type = "l",
      ylab = "Massa corporal (média em g)",
      cex.axis = 1.5, cex.lab = 2, cex.main = 3, cex = 2)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### PAREADO ############### 
 
 
+## 11. Pareado
+
+Para fazer este gráfico você precisará do pacote ggplot2:
+
+```{r}
 library(ggplot2)
+```
 
+Resuma os dados de massa corporal por ano:
+
+```{r}
 massa <- tapply(dados2$body_mass, dados2$year, mean)
+massa
+```
+
+Resuma os dados por sexo e ano:
+
+```{r}
 massa2 <- aggregate(x=dados2$body_mass,
           by=list(dados2$year,dados2$sex),
           FUN=mean)
-colnames(massa2) <- c("ano", "sexo", "massas")
+colnames(massa2) <- c("ano", "sexo", "massa")
 head(massa2)
+```
 
-p1 <- ggplot(massa2, aes(x = sexo, y = massas)) +
+Plote o gráfico:
+
+```{r}
+p1 <- ggplot(massa2, aes(x = sexo, y = massa)) +
     geom_line(aes(group = ano)) +
     geom_point() +
     ggtitle("Diagrama pareado") +
@@ -208,41 +378,74 @@ p1 <- ggplot(massa2, aes(x = sexo, y = massas)) +
         axis.title.y = element_text(color="black", size=18, face="plain"),
         axis.text = element_text(size = 16)) +
     scale_x_discrete(labels = c('Fêmeas','Machos'))
-png(filename= "pareado.png", res= 300, height= 3000, width= 2500)
 p1
-dev.off()
+```
 
 
-############### LOGISTICO ############### 
 
 
+## 12. Logístico
+
+Para fazer este gráfico você precisará de mais 2 pacotes:
+
+```{r}
 library(lme4)
 library(reshape2)
+```
 
+Separe os dados das fêmeas e inspecione-os:
+
+```{r}
 femeas<- read.delim("femeas.txt", header=T)
 head(femeas)
+```
+Veja as dimensões dos dados:
+
+```{r}
 nrow(femeas)
 ncol(femeas)
+```
 
+Confira o padrão geral dos dados:
+
+```{r}
 summary(femeas$body_mass)
+```
+
+Separe apenas os casos em que as fêmeas tenham massa corposal menor do que 30 g:
+
+```{r}
 femeas2 <- subset(femeas, femeas$body_mass < 30)
+head(femeas2)
+```
 
-femeas2$reproductive_stage
+Presuma que as fêmeas com dados faltantes estavam inativas:
+
+```{r}
 femeas2$reproductive_stage[is.na(femeas2$reproductive_stage)] <- "inactive"
+```
 
+
+Transforme os dados reprodutivos em binários:
+
+```{r}
 femeas2$reproductive_stage2 <- ifelse(femeas2$reproductive_stage == "pregnant", 1, 0)
-femeas2$reproductive_stage2
-
-plot(femeas2$reproductive_stage2~femeas2$body_mass)
+```
 
 
+Calcule um modelo logístico para a relação entre estado reprodutivo e massa corporal:
+
+```{r}
 fit1 = glm(femeas2$reproductive_stage2~femeas2$body_mass, family=binomial)
 summary(fit1)
 res1 = anova(fit1, test="Chisq")
 res1
-capture.output(res1, file = "logistica.txt")
+```
 
-png(filename = "logistico.png", res = 300, height= 2500, width= 3000)
+
+Plote o gráfico:
+
+```{r}
 par(mfrow=c(1,1),mar=c(5,5,5,1), bg = "white")
 plot(femeas2$reproductive_stage2~femeas2$body_mass,
      main = "Diagrama logístico",
@@ -255,32 +458,51 @@ axis(2, at=c(0,0.5,1.0),labels=c(0, 0.5, 1.0), col.axis="black", las=2)
 abline(h=0.5, col="black", lty=2)
 curve (exp(fit1$coefficients[[1]]+fit1$coefficients[[2]]*x)/(1+exp(fit1$coefficients[[1]]+fit1$coefficients[[2]]*x)), add=T)
 par(mfrow=c(1,1))
-dev.off()
+```
 
 
-############### MAPA ############### 
 
 
+
+## 13. Mapa
+
+Para fazer este gráfico você precisará de mais alguns pacotes:
+
+```{r}
 library(ggplot2)
 library(ggmap)
 library(ggsn)
 library(maps)
 library(mapdata)
 library(ggrepel)
-library(brazilmaps)
+```
 
+Importe os dados com as coordenadas geográficas dos locais de estudo:
+
+```{r}
 pontos = read.delim("pontos.txt", na.strings = "NA")
 head(pontos)
+```
 
+Melhore os nomes das colunas:
+
+```{r}
 colnames(pontos) = c("long", "lat", "year")
 head(pontos)
+```
 
+Transforme os anos em categorias:
+
+```{r}
 pontos$year = as.factor(pontos$year)
 class(pontos$year)
 write.csv(pontos, "pontos.csv", row.names=F)
+```
 
-map('world', region = "Brazil", fill = F)
 
+Importe o mapa do Brasil e defina os limites a serem usados:
+
+```{r}
 area <-map_data("world", region="Brazil", zoom=1) 
 head(area)
 
@@ -291,9 +513,11 @@ max(pontos$lat)
 
 longs<-c(min(pontos$long)-0.01, max(pontos$long)+0.01)
 lats<-c(min(pontos$lat)-0.01, max(pontos$lat)+0.01)
+```
 
-plot(pontos$long~pontos$lat)
+Plote o gráfico:
 
+```{r}
 g1 <- ggplot() + geom_polygon(data = area,
                               aes(x=long, y = lat, group = group),
                               fill = "lightgrey", color = "lightgrey") +
@@ -316,7 +540,6 @@ g1 <- ggplot() + geom_polygon(data = area,
           axis.title.x = element_text(size = 12, angle=0),
           axis.title.y = element_text(size = 12, angle=90))
 
-png(filename= "mapa.png", res= 300,  height= 20, width=16, unit="cm")
 g1 +
     ggsn::scalebar(area, dist = 500,
                    location = "bottomright", 
@@ -326,20 +549,33 @@ g1 +
                    st.size = 2, 
                    model = 'WGS84') +
     ggsn::north(area, scale = .1)
-dev.off()
+```
 
 
-############### GRAFO ############### 
 
 
+## 14. Grafos
+
+Para desenhar este gráfico você precisará de mais um pacote:
+
+```{r}
 library(bipartite)
+```
 
+
+Importe os dados como um objeto usável pelo pacote bipartite:
+
+```{r}
 grafo <- read.delim("grafo.txt", 
                     row.names=1, 
                     header=TRUE)
-grafo
+head(grafo)
+```
 
-png(filename = "grafo1.png", res = 300, height= 2000, width= 3000)
+
+Plote o gráfico usando o pacote bipartite:
+
+```{r}
 par(mfrow=c(1,1),mar=c(1,1,5,1), bg = "white")
 plotweb(grafo,method = "cca", 
         text.rot = 90, empty = TRUE, labsize = .70, ybig = 0.9, arrow ="no",
@@ -359,29 +595,66 @@ plotweb(grafo,method = "cca",
         y.lim=NULL, x.lim=NULL, low.plot=TRUE)
 title("Grafo",cex.main=3,col.main="black")
 par(mfrow=c(1,1))
-dev.off()
+```
 
-#####
 
+Agora você precisará de mais um pacote para desenhar o gráfico de outra maneira:
+
+```{r}
 library(igraph)
+```
 
+
+Transforme os dados para o formato de um objeto do pacote igraph:
+
+```{r}
 grafo2 <- graph_from_incidence_matrix(grafo, 
                                       directed = FALSE,
                                       weighted = T, 
                                       add.names = NULL)
+```
+
+
+Inspecione o objeto:
+
+```{r}
 grafo2
 E(grafo2)
 V(grafo2)
+```
 
-vec1 <- rep(0,length=98)
-vec2 <- rep(1, length=39)
-types <- c(vec1,vec2)
-colors <- ifelse(types == 0, "black", "grey50")
+Confira a estrutura bipartida do grafo, com 2 classes de nós:
+
+```{r}
+bipartite_mapping(grafo2)
+```
+
+Converta as classes de nós em binárias:
+
+```{r}
+ifelse(V(grafo2)$type == FALSE, 0, 1)
+V(grafo2)$type
+```
+
+
+Defina as cores das classes de nós:
+
+```{r}
+colors <- ifelse(V(grafo2)$type == 0, "black", "grey50")
 colors
+```
 
+
+Defina a espessura das conexões:
+
+```{r}
 E(grafo2)$width = scale(E(grafo2)$weight)
+```
 
-png(filename = "grafo2.png", res = 300, height= 3000, width= 3000)
+
+Plote o gráfico: 
+
+```{r}
 par(mfrow=c(1,1),mar=c(1,1,5,1), bg = "white")
 plot(grafo2,
      vertex.color = colors, 
@@ -396,5 +669,10 @@ plot(grafo2,
      layout=layout_in_circle)
 title("Grafo",cex.main=3,col.main="black")
 par(mfrow=c(1,1))
-dev.off()
+```
+
+
+
+
+
 
