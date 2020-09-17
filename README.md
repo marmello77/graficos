@@ -23,3 +23,13 @@ Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul
 ## Aviso: 
 
 Você pode usar este script livremente para fins não comerciais por seu próprio risco. Não assumimos nenhuma responsabilidade pelo uso deste software, não transmitimos licença ou título sob nenhuma patente, direito autoral ou mascaramento de direito de trabalho sobre o produto. Reservamo-nos o direito de fazer alterações no software sem notificação. Também não declaramos ou garantimos que esse aplicativo seja adequado para o uso especificado sem testes ou modificações adicionais. Se esse script o ajudar a produzir algum trabalho acadêmico (artigo, livro, capítulo, dissertação etc.), por favor, reconheça os autores e cite a fonte.
+
+## Instruções
+
+Você reproduzir os scripts para desenhar os tipos de gráficos mencionados no post de 3 formas:
+
+1. Rodando diretamente as partes que lhe interessam no arquivo R, que contém os scripts brutos;
+2. Rodando passo a passo o tutorial do arquivo RMD, que é bem mais didático;
+3. Lendo o arquivo PDF, que contém o resultado final dos scripts incluídos no tutorial.
+
+Em caso de dúvidas, críticas ou sugestões, fique à vontade para entrar em contato comigo por e-mail ou através de uma *issue* ou *pull request* aqui no GitHub.
