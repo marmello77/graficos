@@ -21,7 +21,7 @@ Rodado no R version 4.0.2 (2020-06-22) -- "Taking Off Again"
 
 ## Fonte dos dados
 
-Neste tutorial usei como exemplo os dados de:
+Neste tutorial usamos como exemplo os dados de:
 
 Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. [“ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.”](https://doi.org/10.1002/ecy.2106) Ecology 99 (2): 498–498.
 
@@ -37,4 +37,4 @@ Você reproduzir os scripts para desenhar os tipos de gráficos mencionados no p
 2. Rodando passo a passo o tutorial do arquivo RMD, que é bem mais didático;
 3. Lendo o arquivo PDF, que contém o resultado final dos scripts incluídos no tutorial.
 
-Em caso de dúvidas, críticas ou sugestões, fique à vontade para entrar em contato comigo por e-mail ou através de uma *issue* ou *pull request* aqui no GitHub.
+Em caso de dúvidas, críticas ou sugestões, fique à vontade para abrir uma *issue* ou fazer um *pull request* aqui no GitHub.
