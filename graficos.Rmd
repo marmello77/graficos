@@ -16,13 +16,18 @@ Códigos de R usados no post "Qual gráfico devo fazer?"
 
 Blog: [Sobrevivendo na Ciência](https://marcoarmello.wordpress.com)
 
-Autor: Marco Mello
+Autores : Marco Mello & Renata Muylaert
 
-E-mail: marmello@usp.br 
+E-mail: marmello@usp.br
 
-Publicado em 17 de setembro de 2020 (versão em português).
+Titulo: Script para desenhar graficos no R
 
-Rodado no R version 4.0.2 (2020-06-22) "Taking Off Again"
+Publicado originalmente em 25 de maio de 2020 (versão em português)
+
+Atualizado e lançado em 18 de setembro de 2020
+
+Rodado no R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+
 
 ## Fonte dos dados 
 
