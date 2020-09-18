@@ -16,6 +16,9 @@ Atualizado e lançado em 18 de setembro de 2020.
 
 Rodado no R version 4.0.2 (2020-06-22) -- "Taking Off Again"
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4036933.svg)](https://doi.org/10.5281/zenodo.4036933)
+
+
 ## Fonte dos dados
 
 Neste tutorial usei como exemplo os dados de:
