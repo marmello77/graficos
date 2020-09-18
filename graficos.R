@@ -7,11 +7,12 @@
 ##### Blog: [Sobrevivendo na Ciencia](https://marcoarmello.wordpress.com)
 ##### Post: Qual gráfico devo fazer?
 ##### https://marcomellolab.wordpress.com
-##### Autor: Marco Mello
+##### Autores : Marco Mello & Renata Muylaert
 ##### E-mail: marmello@usp.br
 ##### Titulo: Script para desenhar graficos no R
-##### Publicado em 25 de maio de 2020 (versão em português).
-##### Rodado no 4.0.0 (2020-04-24) -- "Arbor Day"
+##### Publicado originalmente em 25 de maio de 2020 (versão em português)
+##### Atualizado e lançado em 18 de setembro de 2020
+##### Rodado no R version 4.0.2 (2020-06-22) -- "Taking Off Again"
 ##### Fonte dos dados usados como exemplo: Gonçalves, Fernando, Ricardo S. Bovendorp, Gabrielle Beca, Carolina Bello, Raul Costa-Pereira, Renata L. Muylaert, Raisa R. Rodarte, et al. 2018. “ATLANTIC MAMMAL TRAITS: A Data Set of Morphological Traits of Mammals in the Atlantic Forest of South America.” Ecology 99 (2): 498–498. https://doi.org/10.1002/ecy.2106.
 
 ##### Aviso: Voce pode usar este script livremente para fins nao comerciais por seu proprio risco. Nao assumimos nenhuma responsabilidade pelo uso deste software, nao transmitimos licenca ou titulo sob nenhuma patente, direito autoral ou mascaramento de direito de trabalho sobre o produto. Reservamo-nos o direito de fazer alteracoes no software sem notificacao. Tambem nao declaramos ou garantimos que esse aplicativo seja adequado para o uso especificado sem testes ou modificacoes adicionais. Se esse script o ajudar a produzir algum trabalho academico (artigo, livro, capitulo, dissertacao etc.), por favor, reconheca os autores e cite a fonte.
