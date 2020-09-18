@@ -6,7 +6,7 @@ Blog: [Sobrevivendo na Ciência](https://marcoarmello.wordpress.com).
 
 Autores: Marco Mello e Renata Muylaert.
 
-E-mail: marmello@usp.br .
+E-mail: marmello@usp.br.
 
 Título: Script para desenhar gráficos no R.
 
