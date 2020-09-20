@@ -1,6 +1,6 @@
 # Gráficos
 
-Códigos de R usados no post "Qual gráfico devo fazer?"
+Códigos de R usados no post ["Qual gráfico devo fazer?"](https://marcoarmello.wordpress.com/2020/05/29/qualgrafico/).
 
 Blog: [Sobrevivendo na Ciência](https://marcoarmello.wordpress.com).
 
