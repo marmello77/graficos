@@ -31,7 +31,7 @@ Você pode usar o software disponibilizado aqui livremente para quaisquer fins c
 
 ## Instruções
 
-Você reproduzir os scripts para desenhar os tipos de gráficos mencionados no post de 3 formas:
+Você pode usar os scripts para desenhar os tipos de gráficos mencionados no post de 3 formas:
 
 1. Rodando diretamente as partes que lhe interessam no arquivo R, que contém os scripts brutos;
 2. Rodando passo a passo o tutorial do arquivo RMD, que é bem mais didático;
