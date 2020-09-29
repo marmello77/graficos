@@ -41,8 +41,9 @@ Em caso de dúvidas, críticas ou sugestões, fique à vontade para abrir uma *i
 
 ## Para saber mais
 
-1. [Data Viz Project](https://datavizproject.com)
+1. [Data Viz Project](https://datavizproject.com){:target="_blank"}
 
-2. [The R Graph Gallary](https://www.r-graph-gallery.com)
+2. [From Data to Viz](https://www.data-to-viz.com/#explore){:target="_blank"}
 
-3. [From Data to Viz](https://www.data-to-viz.com/#explore)
+3. [The R Graph Gallery](https://www.r-graph-gallery.com){:target="_blank"}
+
