@@ -38,3 +38,9 @@ Você pode usar os scripts para desenhar os tipos de gráficos mencionados no po
 3. Lendo o arquivo PDF, que contém o resultado final dos scripts incluídos no tutorial.
 
 Em caso de dúvidas, críticas ou sugestões, fique à vontade para abrir uma *issue* ou fazer um *pull request* aqui no GitHub.
+
+## Para saber mais
+
+1. [Data Viz Project](https://datavizproject.com)
+
+2. [The R Graph Gallary](https://www.r-graph-gallery.com)
